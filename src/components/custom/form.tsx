@@ -25,23 +25,25 @@ Form.Input = <T extends ElementType = "input">({
     Element<T>) => {
     const Component = as || "input";
     return (
-        <label className="block space-y-2">
-            <p className="text-sm font-medium text-neutral select-none space-x-1">
-                <span>{props.title}</span>
-                {props.required && <span className="text-error">*</span>}
-            </p>
-            {children ? (
-                children
-            ) : (
-                <Component
-                    className={cn(
-                        "w-full",
-                        (!as || as === "input") && "input",
-                        as === "textarea" && "textarea"
-                    )}
-                    {...props}
-                />
-            )}
-        </label>
+        <div className="">
+            <label className="block space-y-2">
+                <p className="text-sm font-medium text-neutral space-x-1">
+                    <span>{props.title}</span>
+                    {props.required && <span className="text-error">*</span>}
+                </p>
+                {children ? (
+                    children
+                ) : (
+                    <Component
+                        className={cn(
+                            "w-full",
+                            (!as || as === "input") && "input",
+                            as === "textarea" && "textarea"
+                        )}
+                        {...props}
+                    />
+                )}
+            </label>
+        </div>
     );
 };
